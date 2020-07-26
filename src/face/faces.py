@@ -42,20 +42,21 @@ while True:
 
         _id, confidence = recognizer.predict(roi_gray)
         label = "unknown person"
-        if confidence <= 90:
+        if confidence <= 60:
             label = labels[_id]
 
+        print(label, confidence)
         # put label
         (label_width, label_height), baseline = cv2.getTextSize(label, cv2.FONT_HERSHEY_DUPLEX, 0.7, 1)
         cv2.rectangle(frame, (x, y + h), (x + label_width + 10, y + h + label_height + 10), (0, 0, 255), -1)
         cv2.putText(frame, label, (x, y + label_height + h + 3), cv2.FONT_HERSHEY_DUPLEX, 0.7, (0, 0, 0))
 
         # eyes detection
-        eyes = detective.eye_detect(roi)
-        for (x2, y2, w2, h2) in eyes:
-            eye_center = (x + x2 + w2//2, y + y2 + h2//2)
-            radius = int(round((w2 + h2) * 0.25))
-            frame = cv2.circle(frame, eye_center, radius, (255, 0, 0), 4)
+        # eyes = detective.eye_detect(roi)
+        # for (x2, y2, w2, h2) in eyes:
+        #     eye_center = (x + x2 + w2//2, y + y2 + h2//2)
+        #     radius = int(round((w2 + h2) * 0.25))
+        #     frame = cv2.circle(frame, eye_center, radius, (255, 0, 0), 4)
 
         # show face only
         # cv2.imshow('roi', roi)
