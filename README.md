@@ -7,5 +7,5 @@
 ### Usage
 1. access src folder: `cd src`
 2. `python sixframes.py` to show six frames of camera
-3. `python `app1.py` to make six frames appear one after another
+3. `python` app1.py` to make six frames appear one after another
 4. access face folder: `cd face`
